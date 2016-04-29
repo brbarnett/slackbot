@@ -13,7 +13,6 @@ controller.spawn(config).startRTM();
 
 // give the bot something to listen for.
 controller.hears(['hoff'], ['direct_message', 'direct_mention', 'mention'], function (bot, message) {
-    console.log(Guid.raw());
     var reply_with_attachments = {
         attachments: [
             {
