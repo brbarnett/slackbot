@@ -2,7 +2,7 @@ var Botkit = require('botkit');
 var Guid = require('guid');
 
 var controller = Botkit.slackbot({
-    debug: true
+    debug: false
     //include "log: false" to disable logging
     //or a "logLevel" integer from 0 to 7 to adjust logging verbosity
 });
