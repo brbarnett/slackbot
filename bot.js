@@ -1,4 +1,5 @@
 var Botkit = require('botkit');
+var Guid = require('guid');
 
 var controller = Botkit.slackbot({
     debug: true
@@ -11,6 +12,18 @@ var config = require('./slack.config');
 controller.spawn(config).startRTM();
 
 // give the bot something to listen for.
-controller.hears('hello', ['direct_message', 'direct_mention', 'mention'], function (bot, message) {
-    bot.reply(message, 'Hello! I heard: ' + message.text);
+controller.hears(['hoff'], ['direct_message', 'direct_mention', 'mention'], function (bot, message) {
+    console.log(Guid.raw());
+    var reply_with_attachments = {
+        attachments: [
+            {
+                'image_url': 'http://place-hoff.com/400/400?n=' + Guid.raw(),
+                title: 'Hoff'
+            }
+        ],
+        icon_url: 'http://place-hoff.com/400/400?n=' + Guid.raw(),
+        username: 'rp-bot'
+    };
+
+    bot.reply(message, reply_with_attachments);
 });
